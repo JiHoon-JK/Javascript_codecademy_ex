@@ -1,0 +1,30 @@
+let racenumber = Math.floor(Math.random()*1000);
+// racenumber 을 랜덤하게 뽑는다. 0 ~ 1000 
+let registerEarly = true;
+// 일찍 등록한 사람과 늦게 등록하는 사람을 구분한다.
+let runnerAge = 24;
+// 신청자의 나이를 얻는다.
+if (runnerAge>18 && registerEarly){
+  racenumber += 1000;
+}
+// 신청자의 나이가 18세 초과이고, 등록을 일찍 했다면, 랜덤으로 고른 racenumber에 1000을 더한 값을 racenumber에 넣는다.
+else{
+  racenumber = racenumber;
+}
+// 위 if 조건과 다른 그룹들은 모두 랜덤으로 고른 racenumber 그대로 번호를 배정받는다. 
+if (runnerAge>18 && registerEarly){
+  console.log(`Please, You run 9:30 am(Your racenumber is ${racenumber}.)`);
+}
+// 신청자의 나이가 18세 초과 + 일찍 등록했다면, 해당 구문을 보여준다.
+else if (runnerAge>18 && !registerEarly){
+  console.log(`Please, You run 11:00 am(Your racenumber is ${racenumber}.)`);
+}
+// 신청자의 나이가 18세 초과 + 늦게 등록했다면(!), 해당 구문을 보여준다.
+else if (runnerAge<18){
+  console.log(`Please, You run 12:30 am(Your racenumber is ${racenumber}.)`);
+}
+//신청자의 나이가 18세 미만이라면, 해당 구문을 보여준다.
+else{
+  console.log('Your Age is 18 years old. You ask registration desk or call festival phonenumber 010-1111-2222.')
+};
+// 만약, 신청자의 나이가 18세라면, 해당 구문을 보여준다.
