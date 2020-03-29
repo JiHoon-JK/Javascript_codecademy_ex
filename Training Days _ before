@@ -1,0 +1,54 @@
+// The scope of `random` is too loose 
+// 문제 ① 'random' 변수의 범위가 너무 느슨하다. random을 전역변수로 설정하는 것보다는,
+// 사용하는 함수에 지역변수로 넣는 것이 더 좋을 것 같다.
+const random = Math.floor(Math.random() * 3);
+
+const getRandEvent = () => {
+  if (random === 0) {
+    return 'Marathon';
+  } else if (random === 1) {
+    return 'Triathlon';
+  } else if (random === 2) {
+    return 'Pentathlon';
+  }
+};
+
+// The scope of `days` is too tight 
+// 문제 ② 'days' 변수의 범위가 너무 묶여있다. if 문 안에 days 변수를 여러개 쓰고,
+// getTrainingDays () 함수의 블록문안에 days 변수를 사용하는 것은 오류 발생이 될 것으로 보임.
+const getTrainingDays = event => {
+
+  if (event === 'Marathon') {
+    let days = 50;
+  } else if (event === 'Triathlon') {
+    let days = 100;
+  } else if (event === 'Pentathlon') {
+    let days = 200;
+  }
+
+  return days;
+};
+
+// The scope of `name` is too tight 
+// 문제 ③ 'name' 변수가 너무 타이트하다. 
+// logEvent() 함수와 logTime()함수에서 동일한 변수명을 쓰고 있다.
+// 다른 함수의 지역변수에서 동일한 변수명으로 다르게 쓰이는 것은 scope pollution 가능성이↑
+// name을 지역변수에서 전역변수로 빼낸다.
+const logEvent = event => {
+  const name = 'Nala';
+  console.log(`${name}'s event is: ${event}`);
+};
+
+const logTime = days => {
+  const name = 'Nala';
+  console.log(`${name}'s time to train is: ${days} days`);
+};
+
+const event = getRandEvent();
+const days = getTrainingDays(event);
+// Define a `name` variable. Use it as an argument after updating logEvent and logTime 
+// 'name' 변수명을 정의하는 것을 logEvent 와 logTime을 사용하기 전에, 언급하는 것이 좋을듯.
+
+
+logEvent(event);
+logTime(days);
