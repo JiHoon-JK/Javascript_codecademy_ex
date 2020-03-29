@@ -1,0 +1,16 @@
+const kelvin = 0;
+// 항상 변함이 없는 데이터 값 -> const
+let celsius = kelvin - 273;
+// celsius 는 kelvin에서 273을 뺀 값
+let fahrenheit = celsius*(9/5)+32;
+// celsius 를 통해서 Fahrenheit 를 계산하는 식
+fahrenheit = Math.floor(fahrenheit);
+// Fahrenheit 값을 정수로 환산시키기 위해서, Math.floor() 를 이용해서 전환시킨다.
+console.log(The temperature is ${fahrenheit} degrees Fahrenheit.);
+// console.log로 주어진 문장 찍고, TEMPERATURE 대신에, fahrenheit 값을 넣어준다. ``, ${}을 이용해서 하는 것이 좋다.
+let Newton = celsius*(33/100);
+// Newton의 celsius를 활용한 계산법
+Newton = Math.floor(Newton);
+// Newton을 정수화시킨다.
+console.log(The temperature is ${Newton} degrees Newton.);
+//Newton을 출력한다.
