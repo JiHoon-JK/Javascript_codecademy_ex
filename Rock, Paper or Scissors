@@ -1,0 +1,74 @@
+// getUsersChoice() 함수는, 유저의 선택을 얻는 함수.
+const getUsersChoice = userInput => {
+  userInput = userInput.toLowerCase();
+  if (userInput === 'rock' || userInput === 'paper' || userInput === 'scissors' || userInput ==='bomb'){
+    return userInput
+  }
+  else {
+    console.log('error!');
+  }
+};
+// getComputerChoice() 함수는, 컴퓨터의 선택을 가져오는 함수. 컴퓨터의 선택은 random 으로 가져온다.
+// if 문이 아닌, switch 함수를 사용해보았다.
+const getComputerChoice = () => {
+  randomNumber = Math.floor(Math.random()* 3);
+  switch (randomNumber) {
+    case 0:
+      return 'rock';
+    case 1:
+      return 'paper';
+    case 2:
+      return 'scissors';
+  }
+}
+// determineWinner() 함수는, 유저의 선택과 컴퓨터의 선택을 바탕으로 결론은 도출해내는 함수이다.
+const determineWinner = (userChoice,computerChoice) => {
+  if (userChoice === 'bomb') {
+    return "User use cheat key 'bomb'. so, user is win!"
+  }
+  if (userChoice === computerChoice) {
+    return 'This match is draw. Please Again this match!'
+  }
+  if (userChoice === 'rock'){
+    if (computerChoice === 'paper'){
+      return 'user is lose!'
+    }
+    else {
+      return 'user is win!'
+    }
+  }
+  if (userChoice === 'paper'){
+    if (computerChoice === 'rock'){
+      return 'user is win!'
+    }
+    else {
+      return 'user is lose!'
+    }
+  }
+  if (userChoice === 'scissors'){
+    if (computerChoice === 'rock'){
+      return 'user is lose!'
+    }
+    else {
+      return 'user is win!'
+    }
+  }
+}
+/*
+console.log(determineWinner('paper','scissors'));
+console.log(determineWinner('paper','paper'));
+console.log(determineWinner('paper','rock'));
+determineWinner() 함수 점검을 위한 console.log()
+*/
+// playGame() 함수는, 게임을 시작하는 함수이다. 위에 작성한 3개의 함수를 적용하는 함수이다.
+const playGame = () => {
+  const userChoice = getUsersChoice('rock');
+  const computerChoice = getComputerChoice();
+  console.log('user choice is ' + userChoice);
+  console.log('computer choice is ' + computerChoice);
+  determineWinner(userChoice,computerChoice)
+  console.log(determineWinner(userChoice,computerChoice));
+  
+}
+// playGame 함수를 실행한다.
+playGame()
