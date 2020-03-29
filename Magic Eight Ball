@@ -1,0 +1,46 @@
+let userName = 'JH_Kim';
+// 사용자의 이름을 입력합니다. 예시) JH_Kim
+if (userName === 'JH_Kim') {
+  console.log(`Hello, ${userName}!`);
+}
+else{
+  console.log('Hello!');
+}
+// 사용자가 이름을 입력했다면, 'Hello, JH_Kim!' 같이 출력 , 입력하지 않았다면 'Hello!'만 출력
+const userQuestion = 'We will find a way, we always have.'
+console.log(`The user asked: ${userQuestion}`);
+// 입력한 사용자의 질문을 넣고 'The user asked:' 형식에 삽입
+const randomNumber = Math.floor(Math.random()*8);
+// Math.random() 으로 하면, 0 ~ 1 이지만 *8 을 하면서 0 ~ 8 중에서 랜덤으로 수를 뽑기
+let eightBall = '';
+// eightBall 이라는 빈 string으로 구성되어있는 변수를 만든다.
+console.log(randomNumber)
+// 랜덤으로 뽑은 수가 무엇인지 확인하기 위해서 찍은 console.log()
+switch (randomNumber){
+  case 0:
+    eightBall ='It is certain';
+    break;
+  case 1:
+    eightBall ='It is decidely so';
+    break;
+  case 2:
+    eightBall = 'Reply hazy try again';
+    break;
+  case 3:
+    eightBall = 'Cannot predict now';
+    break;
+  case 4:
+    eightBall = 'Do not count on it';
+    break;
+  case 5:
+    eightBall = 'My sources say no';
+    break;
+  case 6:
+    eightBall = 'Outlook not so good';
+    break;
+  case 7:
+    eightBall = 'Signs point to yes';
+    break; 
+}
+// 랜덤으로 뽑은 수와 eightBall 에 구문을 console.log()를 통해서 출력해보기.
+console.log(eightBall)
