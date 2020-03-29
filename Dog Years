@@ -1,0 +1,18 @@
+let myAge = 25;
+// 인간의 나이 (내 나이를 입력)
+let earlyYears = 2;
+// 일찍 태어난 년은 2년으로 입력 
+earlyYears = earlyYears * 10.5;
+// earlyYears 는 인간의 나이로 1년에 10.5년 이기에, 곱셈을 활용 1~2년을 계산함. (earlyYears *= 10.5)도 가능함.
+let laterYears = myAge - 2;
+// 처음 2년을 뺀, 나의 나이 값을 laterYears에 넣는다.
+laterYears = laterYears * 4;
+// laterYears 에 4를 곱해서 개의 나이로 환산한다. (laterYears *= 4)도 가능함.
+console.log(earlyYears);
+console.log(laterYears);
+// 값들이 잘 들어오는지 확인하기 위한 console.log()
+let myAgeInDogYears = earlyYears + laterYears;
+// myAgeInDogYears 에 earlyYears와 laterYears를 더한 값을 넣는다.
+let myName = 'KimJiHoon'.toLowerCase();
+// 내 이름을 적고, 소문자로 바꿔주는 method인, toLowerCase()를 이용한다.
+console.log(`My name is ${myName}. I am ${myAge} years old in human years which is ${myAgeInDogYears} years old in doe years.`);
