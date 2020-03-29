@@ -1,0 +1,44 @@
+// 요일마다 수면시간을 구하는 함수 getSleepHours()
+const getSleepHours = (day) => {
+  if (day === 'monday'){
+    return 8
+  } else if (day === 'tuesday'){
+    return 7
+  } else if (day === 'wednesday'){
+    return 6
+  } else if (day === 'thursday'){
+    return 7
+  } else if (day === 'friday'){
+    return 6
+  } else if (day === 'saturday'){
+    return 6
+  } else if (day === 'sunday'){
+    return 5
+  }
+}
+console.log(getSleepHours('tuesday'));
+// 일주일 동안의 실질적인 수면시간의 합을 구하는 함수 getActualSleepHours()
+// 한 줄로 되어있는 문장이라서 {} 문을 제거했다. (+ return문까지)
+const getActualSleepHours = () => getSleepHours('monday') + getSleepHours('tuesday') + getSleepHours('wednesday') + getSleepHours('thursday') + getSleepHours('friday') + getSleepHours('saturday') + getSleepHours('sunday')
+;
+console.log(getActualSleepHours());
+// 이상적인 수면시간을 구하는 함수 getIdealSleepHours(), 하루 기준이기에, x7(일주일=7일)을 한다.
+const getIdealSleepHours = () => {
+  const idealHours = 7.5;
+  return idealHours * 7;
+}
+console.log(getIdealSleepHours());
+// calculateSleepDebt()는, 실질 수면시간과 이상적 수면시간의 비교를 해주는 함수.
+// 기존에 작성했던 함수들을 모두 사용하는 함수이다.
+const calculateSleepDebt = () => {
+  const actualSleepHours = getActualSleepHours()
+  const idealSleepHours = getIdealSleepHours()
+  if (actualSleepHours === idealSleepHours){
+    return 'Your Sleep Hour is Perfect!'
+  } else if (actualSleepHours > idealSleepHours){
+    return 'Your Sleep Hour is Excessive! You need to reduce your sleep hour'
+  } else if (actualSleepHours < idealSleepHours){
+    return 'Your Sleep Hour is lack! You need to increase your sleep hour'
+  }
+}
+console.log(calculateSleepDebt());
