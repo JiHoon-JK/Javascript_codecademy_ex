@@ -1,0 +1,58 @@
+// The scope of `random` is too loose
+// 전역변수로 정의내린, random 변수를 getRandEvent() 함수 안으로 넣었다. 
+const getRandEvent = () => {
+  const random = Math.floor(Math.random() * 3);
+  if (random === 0) {
+    return 'Marathon';
+  } else if (random === 1) {
+    return 'Triathlon';
+  } else if (random === 2) {
+    return 'Pentathlon';
+  }
+};
+
+// The scope of `days` is too tight 
+// if 구문 마다 있던, days 지역변수를 블록문에서 console.log 할 때 오류가 나기 때문에,
+// if 구문 밖 블록문 안에 days 변수를 정의해준다.
+const getTrainingDays = event => {
+  let days
+  if (event === 'Marathon') {
+    days = 50;
+  } else if (event === 'Triathlon') {
+    days = 100;
+  } else if (event === 'Pentathlon') {
+    days = 200;
+  }
+
+  return days;
+};
+
+// The scope of `name` is too tight 
+// 두 함수에서 동일한 이름'name'의 정의를 내리고 있기 때문에, 오류 발생↑
+// 함수마다 지역변수로 되어있던, name을 빼내어, 함수를 호출하기 전에 선언하는 것을 한다.
+// 또한, 함수마다 블록에 정의되던 name을 parameter로 넣는다.
+// 호출할 때의 parameter 역시 수정해야한다.
+const logEvent = (name,event) => {
+  console.log(`${name}'s event is: ${event}`);
+};
+
+const logTime = (name,day) => {
+  console.log(`${name}'s time to train is: ${days} days`);
+};
+
+const event = getRandEvent();
+const days = getTrainingDays(event);
+// Define a `name` variable. Use it as an argument after updating logEvent and logTime 
+// name 변수선언을 전역변수로 수정한다.
+// 함수를 호출할 때, parameter 역시 수정한다.
+const name = 'Nala';
+logEvent(name,event);
+logTime(name,days);
+
+// 
+const event2 = getRandEvent();
+const days2 = getTrainingDays(event2);
+const name2 = 'Warren';
+
+logEvent(name2, event2);
+logTime(name2, days2);
