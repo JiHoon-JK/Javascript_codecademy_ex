@@ -1,0 +1,66 @@
+let story = 'Last weekend, I took literally the most beautiful bike ride of my life. The route is called "The 9W to Nyack" and it actually stretches all the way from Riverside Park in Manhattan to South Nyack, New Jersey. It\'s really an adventure from beginning to end! It is a 48 mile loop and it basically took me an entire day. I stopped at Riverbank State Park to take some extremely artsy photos. It was a short stop, though, because I had a really long way left to go. After a quick photo op at the very popular Little Red Lighthouse, I began my trek across the George Washington Bridge into New Jersey.  The GW is actually very long - 4,760 feet! I was already very tired by the time I got to the other side.  An hour later, I reached Greenbrook Nature Sanctuary, an extremely beautiful park along the coast of the Hudson.  Something that was very surprising to me was that near the end of the route you actually cross back into New York! At this point, you are very close to the end.';
+// 전체 스토리
+let overusedWords = ['really', 'very', 'basically'];
+// 과하게 사용된 언어
+let unnecessaryWords = ['extremely', 'literally', 'actually' ];
+// 불필요하게 사용된 언어
+const storyWords = story.split(' ');
+//console.log(storyWords.length)
+// storyWords 에 story 에 띄어쓰기 부분을 제거한다.
+let betterWords =
+storyWords.filter(function(word){
+  return !unnecessaryWords.includes(word)
+});
+// betterWords 에 unnecessaryWords 에 해당하는 문자들을 제외시키고 새로운 배열로 반환한다.
+// filter() 와 includes() 를 사용한다. 부정의 의미는 '!' 를 사용한다.
+//console.log(betterWords);
+let reallyCount = 0;
+let veryCount = 0;
+let basicallyCount = 0;
+// 과하게 사용한 단어의 갯수를 파악하기 위해서, 변수를 선언하고 0으로 정의한다.
+for (word of storyWords){
+  if (word === 'really'){
+    reallyCount += 1
+  } else if (word === 'very'){
+    veryCount += 1
+  } else if (word === 'basically'){
+    basicallyCount += 1
+  }
+}
+// 만약 해당 하는 단어가 있다면, +1이 되는 for / if 문을 만든다.
+//console.log("really count: "+ reallyCount);
+//console.log("very count: "+ veryCount);
+//console.log("basically count: "+ basicallyCount);
+
+let sentencesCount = 0;
+// 문장의 갯수를 파악하기 위해서 새로운 변수를 정의해준다. 0으로 정의한다.
+storyWords.forEach(word =>{
+  if (word[word.length-1] === '.'||word[word.length-1] ==='!'){
+    sentencesCount += 1
+  }
+})
+// storyWords 를 하나씩 뽑고, 보통 문장의 끝에 있는 '.' 와 '!'를 기준으로 문장의 갯수를 분석한다.
+// word 의 마지막 index에 '.' 이나 '!' 가 있기 때문에, (length -1)을 활용한다.
+// word[word.length-1] : word의 마지막 index가 무엇인지 의미한다.
+// if 문을 통해서, word 의 마지막 index가 '.' 이거나 '!' 에 해당한다면, sentencesCount 에 +1 을 더한다.
+
+console.log("The word count: " + storyWords.length);
+console.log("The sentences count: " + sentencesCount);
+console.log("The really count: " + reallyCount);
+console.log("The very count: " + veryCount);
+console.log("The basically count: " + basicallyCount);
+// 지금까지 한 것들을 정리한다.
+// word 의 갯수, sentences의 갯수, really의 갯수, very의 갯수, basically의 갯수를 정리한다.
+console.log(betterWords.join(" "))
+// 불필요한 문자들과 띄어쓰기를 제거한 betterWords 를 한 문장으로 정의한다. (.join(" ")) 을 활용하면,
+// 해당 리스트들을 한 문장으로 붙일 수 있다.
+
+/*
+Output:
+The word count: 188
+The sentences count: 12
+The really count: 2
+The very count: 5
+The basically count: 1
+Last weekend, I took the most beautiful bike ride of my life. The route is called "The 9W to Nyack" and it stretches all the way from Riverside Park in Manhattan to South Nyack, New Jersey. It's really an adventure from beginning to end! It is a 48 mile loop and it basically took me an entire day. I stopped at Riverbank State Park to take some artsy photos. It was a short stop, though, because I had a really long way left to go. After a quick photo op at the very popular Little Red Lighthouse, I began my trek across the George Washington Bridge into New Jersey.  The GW is very long - 4,760 feet! I was already very tired by the time I got to the other side.  An hour later, I reached Greenbrook Nature Sanctuary, an beautiful park along the coast of the Hudson.  Something that was very surprising to me was that near the end of the route you cross back into New York! At this point, you are very close to the end.
+*/
