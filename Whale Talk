@@ -1,0 +1,17 @@
+let input = 'Sparta Coding Club';
+// 고래언어로 번역할 인간문자
+let vowels = ['a','e','i','o','u'];
+// 고래언어는 a, e, i, o, u 로만 이루어져있다.
+let resultArray = []
+// 입력한 값을 vowles 로 번역했을 때 나온 값을 resultArray에 넣을 것이다.
+for (let i =0; i < input.length; i++){
+  for (let j =0; j < vowels.length; j++){
+    if(input[i]==='a'|| input[i]==='e'||input[i]==='i'||input[i]==='o'||input[i]==='u'){
+      resultArray.push(input[i]);
+    }
+  }
+}
+// console.log(resultArray);
+// 각각의 글자들이 따로따로 구분되어있다는 것을 확인할 수 있다.
+console.log(resultArray.join('').toUpperCase());
+// 글자들을 합치고, 대문자로 바꿔준다. .join('')과 toUpperCase() 를 활용한다.
